@@ -1,0 +1,73 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "TravelServiceManagementDBContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "TravelService",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[BOOKING]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CAR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[FLIGHT]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[HOTEL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PLACES]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ROLE]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TOUR]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[USER]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "laptop-e47jik8o\\mssqlserver02.TravelServiceManagementDB.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

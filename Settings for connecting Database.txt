@@ -1,0 +1,13 @@
+Settings for connecting Database into ASP.NET Core
+
+PROGRAM.CS ( Changes based on the name )
+using TravelServiceManagement.Models;
+builder.Services.AddSqlServer<TravelServiceDBContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+APPSETTINGS.JSON ( Change the database name according to your DB )
+ "ConnectionStrings": {
+   "DefaultConnection": "Data Source=LAPTOP-E47JIK8O\\MSSQLSERVER02;Initial Catalog=TravelServiceDB;Integrated Security=True;TrustServerCertificate=True"
+ },
+
+GLOBAL VARIATION ERROR
+Go to csropj file and change to FALSE

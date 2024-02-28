@@ -1,0 +1,23 @@
+.checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    gap: 200px;
+ }
+ .order-info {
+    border: 1px solid black;
+    padding: 50px;
+ }
+ .checkout-payment {
+    border: 1px solid darkgrey;
+    padding: 50px;
+ }
+ .checkout-button {
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: chocolate;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+ }

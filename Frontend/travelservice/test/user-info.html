@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Trang Chủ</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="../public/assets/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="../public/assets/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="../public/assets/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="../public/assets/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="../public/assets/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="../public/assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="../public/assets/css/owl.theme.default.min.css">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <style>
+        .navigation {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            font-size: 30px;
+            font-weight: 800;
+            color: black;
+        }
+        .nav-link {
+            background-color: white;
+        }
+        .profile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 400px;
+            height: 400px;
+        }
+        .edit-button {
+            margin: 10px;
+            padding: 10px 15px;
+            background-color: chocolate;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .orders {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .orders th {
+            background-color:lightblue;
+            color: #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .orders td {
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .orders tr:nth-child(even) {
+            background-color:khaki;
+        }
+
+        .orders tr:hover {
+            background-color: blanchedalmond; 
+        }
+        .hidden {
+            display: none;
+        }
+      </style>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('data-target');
+                    var sections = document.querySelectorAll('section[id]');
+                    sections.forEach(function(section) {
+                        if (section.id === targetId) {
+                            section.classList.remove('hidden');
+                        } else {
+                            section.classList.add('hidden');
+                        }
+                     });
+                  });
+               });
+           });
+      </script>
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="../public/assets/images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="header_white_section">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="header_information">
+                           <ul>
+                              <span style="font-weight: 600;">Xin chào, Nguyễn Phước An</span>
+                              <li><a href="user-info.html"><img src="../public/assets/images/user-profile.png" alt="3.png"/>Profile</a></li>
+                              <li><a href="test.html"><img src="../public/assets/images/logout.png" alt="3.png"/>Logout</a></li>
+                          </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <div class="menu-area">
+                        <div class="limit-box">
+                           <nav class="main-menu">
+                              <ul class="menu-area-main">
+                                 <li><a href="test.html">Home</a> </li>
+                                 <li><a href="traveltest.html">Vietnam Travel</a> </li>
+                                 <li><a href="abroadtest.html">Abroad Travel</a></li>
+                                 <li><a href="#blog">Blog</a></li>
+                                 <li><a href="#contact">Contact Us</a></li>
+                              </ul>
+                           </nav>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end header inner -->
+      </header>
+      <!-- end header -->
+      <!-- Navigation -->
+      <section>
+        <nav class="navigation">
+            |
+            <button class="nav-link" type="button" data-target="profile">
+                User Profile
+            </button>
+            |
+            <button class="nav-link" type="button" data-target="orders">
+                Orders
+            </button>
+            |
+        </nav>
+    </section>
+      <!-- end Navigation-->
+     <!-- User Profile-->
+    <section id="profile" class="hidden">
+        <div class="profile">
+            <div class="profile-box">
+                <h3 style="font-weight: 700;">THÔNG TIN NGƯỜI DÙNG</h3>
+                <p>Tên: Nguyễn Phước An</p>
+                <p>Ngày Sinh: 09/02/2002</p>
+                <p>Số Điện Thoại: 0901073786</p>
+                <p>Địa Chỉ: Ninh Kiều, TP Cần Thơ</p>
+                <button class="edit-button" type="button">Cập Nhật Thông Tin</button>
+            </div>
+        </div>
+    </section>
+    <!-- end User Profile-->
+
+    <!-- Order -->
+    <section id="orders" class="hidden">
+        <div class="orders">
+            <table>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Tour</th>
+                    <th>Tên Tour</th>
+                    <th>Số Người</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Ngày Kết Thúc</th>
+                    <th>Giá Tiền</th>
+                    <th>Trạng Thái</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>XYC1234</td>
+                    <td>Du Lịch Phú Quốc</td>
+                    <td>4</td>
+                    <td>21/2</td>
+                    <td>24/2</td>
+                    <td>32.000.000</td>
+                    <td>Đã Hoàn Thành</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>XYC1234</td>
+                    <td>Du Lịch Phú Quốc</td>
+                    <td>4</td>
+                    <td>21/2</td>
+                    <td>24/2</td>
+                    <td>32.000.000</td>
+                    <td>Đã Hoàn Thành</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <!-- end Order -->
+    <!-- footer -->
+      <footer>
+         <div id="contact" class="footer">
+            <div class="container">
+               <div class="row pdn-top-30">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                     <ul class="location_icon">
+                        <li> <a href="#"><img src="../public/assets/icons/facebook.png"></a></li>
+                        <li> <a href="#"><img src="../public/assets/icons/Twitter.png"></a></li>
+                        <li> <a href="#"><img src="../public/assets/icons/linkedin.png"></a></li>
+                        <li> <a href="#"><img src="../public/assets/icons/instagram.png"></a></li>
+                     </ul>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="Follow">
+                        <h3>CONTACT US</h3>
+                        <span>123 Second Street Fifth <br>Avenue,<br>
+                        Manhattan, New York<br>
+                        +987 654 3210</span>
+                     </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                     <div class="Follow">
+                        <h3>ADDITIONAL LINKS</h3>
+                        <ul class="link">
+                           <li> <a href="#">About us</a></li>
+                           <li> <a href="#">Terms and conditions</a></li>
+                           <li> <a href="#"> Privacy policy</a></li>
+                           <li> <a href="#">News</a></li>
+                           <li> <a href="#"> Contact us</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                     <div class="Follow">
+                        <h3> Contact</h3>
+                        <div class="row">
+                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <input class="Newsletter" placeholder="Name" type="text">
+                           </div>
+                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                              <input class="Newsletter" placeholder="Email" type="text">
+                           </div>
+                           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                              <textarea class="textarea" placeholder="comment" type="text">Comment</textarea>
+                           </div>
+                        </div>
+                        <button class="Subscribe">Submit</button>
+                     </div>
+                  </div>
+               </div>
+               <div class="copyright">
+                  <div class="container">
+                     <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="../public/assets/js/jquery.min.js"></script>
+      <script src="../public/assets/js/popper.min.js"></script>
+      <script src="../public/assets/js/bootstrap.bundle.min.js"></script>
+      <script src="../public/assets/js/jquery-3.0.0.min.js"></script>
+      <script src="../public/assets/js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="../public/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="../public/assets/js/custom.js"></script>
+      <!-- javascript --> 
+      <script src="../public/assets/js/owl.carousel.js"></script>
+      <script>
+         $(document).ready(function() {
+           var owl = $('.owl-carousel');
+           owl.owlCarousel({
+             margin: 10,
+             nav: true,
+             loop: true,
+             responsive: {
+               0: {
+                 items: 1
+               },
+               600: {
+                 items: 2
+               },
+               1000: {
+                 items: 3
+               }
+             }
+           })
+         })
+      </script>
+     
+   </body>
+</html>

@@ -1,0 +1,7 @@
+.table-header {
+    background-color: #007bff;
+    color: #fff;
+}
+.table-bordered thead th, .table-bordered td {
+     border: 1px solid #dee2e6;
+}
