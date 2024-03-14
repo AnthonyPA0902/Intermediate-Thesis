@@ -14,9 +14,9 @@ const CheckOut = () => {
             <div className="checkout-payment">
                <p>Vui lòng chọn phương thức thanh toán: </p>
                   <input type="radio" id="VNPay" name="checkout-method" value="VNPay" />
-                  <label for="VNPay" style={{ float: 'none' }}>VNPAY</label><br />
+                  <label htmlFor="VNPay" style={{ float: 'none' }}>VNPAY</label><br />
                   <input type="radio" id="Paypal" name="checkout-method" value="Paypal" />
-                  <label for="Paypal" style={{ float: 'none' }}>PAYPAL</label><br />
+                  <label htmlFor="Paypal" style={{ float: 'none' }}>PAYPAL</label><br />
                <a href="/"><button className="checkout-button" type="submit">THANH TOÁN</button></a>
             </div>
         </div>

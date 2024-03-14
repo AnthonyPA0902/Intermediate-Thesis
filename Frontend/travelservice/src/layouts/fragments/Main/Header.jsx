@@ -3,9 +3,7 @@ import NavigationBar from './NavigationBar'
 
 const Header = () => {
     useEffect(() => {
-        if(!document.getElementById('main-style')){
             const style1 = document.createElement('link');
-            style1.id = 'main-style'
             style1.rel = 'stylesheet'
             style1.href = '/assets/css/bootstrap.min.css';
             document.head.appendChild(style1);
@@ -55,7 +53,6 @@ const Header = () => {
             style10.rel = 'stylesheet';
             style10.href = '/assets/css/checkout.css';
             document.head.appendChild(style10);
-        }
     });
     return (
         <div>

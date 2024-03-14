@@ -5,15 +5,15 @@ using System.Collections.Generic;
 
 namespace TravelService.Models;
 
-public partial class CAR
+public partial class Tour_Details_Image
 {
     public int id { get; set; }
 
-    public string driver_name { get; set; }
+    public string name { get; set; }
 
-    public string type { get; set; }
+    public string url { get; set; }
 
-    public int? seat { get; set; }
+    public int tour_details_id { get; set; }
 
-    public virtual ICollection<TOUR> TOURs { get; set; } = new List<TOUR>();
+    public virtual Tour_Detail tour_details { get; set; }
 }

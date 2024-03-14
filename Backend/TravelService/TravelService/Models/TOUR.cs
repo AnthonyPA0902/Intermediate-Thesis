@@ -5,41 +5,21 @@ using System.Collections.Generic;
 
 namespace TravelService.Models;
 
-public partial class TOUR
+public partial class Tour
 {
     public int id { get; set; }
 
-    public string code { get; set; }
+    public string name { get; set; }
 
-    public string description { get; set; }
+    public long? price { get; set; }
 
-    public string details { get; set; }
+    public string duration { get; set; }
 
-    public string start_destination { get; set; }
+    public string picture { get; set; }
 
-    public string finish_destination { get; set; }
+    public int category_id { get; set; }
 
-    public DateOnly? begin_date { get; set; }
+    public virtual ICollection<Tour_Detail> Tour_Details { get; set; } = new List<Tour_Detail>();
 
-    public DateOnly? end_date { get; set; }
-
-    public double? price { get; set; }
-
-    public int place_id { get; set; }
-
-    public int hotel_id { get; set; }
-
-    public int car_id { get; set; }
-
-    public int flight_id { get; set; }
-
-    public virtual ICollection<BOOKING> BOOKINGs { get; set; } = new List<BOOKING>();
-
-    public virtual CAR car { get; set; }
-
-    public virtual FLIGHT flight { get; set; }
-
-    public virtual HOTEL hotel { get; set; }
-
-    public virtual PLACE place { get; set; }
+    public virtual Category category { get; set; }
 }

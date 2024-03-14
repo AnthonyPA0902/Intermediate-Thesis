@@ -1,6 +1,8 @@
 #tour-list {
     display: flex;
     padding: 40px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .card {
     border: 1px solid #ddd; /* Add a subtle border */

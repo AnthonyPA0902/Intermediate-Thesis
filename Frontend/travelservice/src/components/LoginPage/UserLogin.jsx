@@ -1,6 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+    const [error, setError] = useState(false);
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+    });
+
+    const handleInputChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value,
+        });
+      };
+    
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+              await fetch('https://localhost:7026/api/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+            }).then(response=>response.json()).then(data=>{
+                      console.log(data)
+                      if(data !==null){
+                          localStorage.setItem("token", data.token)
+                          navigate('/');
+                      }
+                      else{
+                          setError("Bạn đã nhập sai mã nhân viên hoặc mật khẩu")
+                      }
+                  });
+          } catch (error) {
+            setError(true);
+            console.error('Error:', error);
+        }
+    };
     return (
         <section className="h-100 gradient-form" style={{ backgroundColor: '#eee' }}>
             <div className="container py-5 h-100">
@@ -13,18 +53,20 @@ const Login = () => {
                                         <div className="text-center">
                                             <a href="/"><img src="/assets/images/travel-logo.png" style={{ width: '185px' }} alt="logo" /></a>
                                         </div>
-                                        <form>
+                                        <form onSubmit={handleSubmit}>
                                             <p>Hãy Đăng Nhập Vào Tài Khoản Của Bạn</p>
                                             <div className="form-outline mb-4">
                                                 <label className="form-label" htmlFor="username">Tài Khoản</label>
-                                                <input type="email" id="username" className="form-control" placeholder="Phone number or email address" />
+                                                <input type="text" id="username" className="form-control" name="username" value={formData.username} onChange={handleInputChange}/>
                                             </div>
                                             <div className="form-outline mb-4">
                                                 <label className="form-label" htmlFor="password">Mật Khẩu</label>
-                                                <input type="password" id="password" className="form-control" />
+                                                <input type="password" id="password" className="form-control" name="password" value={formData.password} onChange={handleInputChange}/>
                                             </div>
+                                            {error && (<div className="text-danger">Bạn đã nhập sai email hoặc mật khẩu</div>
+)}
                                             <div className="text-center pt-1 mb-5 pb-1">
-                                                <a href="/"><button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Đăng Nhập</button></a>
+                                                <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Đăng Nhập</button>
                                                 <a className="text-muted" href="/forget">Quên Mật Khẩu?</a>
                                             </div>
                                             <div className="d-flex align-items-center justify-content-center pb-4">

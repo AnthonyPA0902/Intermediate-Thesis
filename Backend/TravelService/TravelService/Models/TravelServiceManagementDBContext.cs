@@ -13,133 +13,122 @@ public partial class TravelServiceManagementDBContext : DbContext
     {
     }
 
-    public virtual DbSet<BOOKING> BOOKINGs { get; set; }
+    public virtual DbSet<Category> Categories { get; set; }
 
-    public virtual DbSet<CAR> CARs { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
 
-    public virtual DbSet<FLIGHT> FLIGHTs { get; set; }
+    public virtual DbSet<Customer_Order> Customer_Orders { get; set; }
 
-    public virtual DbSet<HOTEL> HOTELs { get; set; }
+    public virtual DbSet<Employee> Employees { get; set; }
 
-    public virtual DbSet<PLACE> PLACEs { get; set; }
+    public virtual DbSet<Role> Roles { get; set; }
 
-    public virtual DbSet<ROLE> ROLEs { get; set; }
+    public virtual DbSet<Tour> Tours { get; set; }
 
-    public virtual DbSet<TOUR> TOURs { get; set; }
+    public virtual DbSet<Tour_Detail> Tour_Details { get; set; }
 
-    public virtual DbSet<USER> USERs { get; set; }
+    public virtual DbSet<Tour_Details_Image> Tour_Details_Images { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<BOOKING>(entity =>
+        modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => new { e.user_id, e.tour_id });
+            entity.ToTable("Category");
 
-            entity.ToTable("BOOKING");
+            entity.Property(e => e.name).HasMaxLength(20);
+        });
 
-            entity.Property(e => e.tour_id).ValueGeneratedOnAdd();
-            entity.Property(e => e.time).HasColumnType("datetime");
+        modelBuilder.Entity<Customer>(entity =>
+        {
+            entity.ToTable("Customer");
 
-            entity.HasOne(d => d.tour).WithMany(p => p.BOOKINGs)
-                .HasForeignKey(d => d.tour_id)
+            entity.Property(e => e.address).HasMaxLength(50);
+            entity.Property(e => e.email).HasMaxLength(30);
+            entity.Property(e => e.name).HasMaxLength(30);
+            entity.Property(e => e.password).HasMaxLength(20);
+            entity.Property(e => e.phone).HasMaxLength(11);
+            entity.Property(e => e.username).HasMaxLength(30);
+        });
+
+        modelBuilder.Entity<Customer_Order>(entity =>
+        {
+            entity.ToTable("Customer_Order");
+
+            entity.Property(e => e.payment_code).HasMaxLength(20);
+            entity.Property(e => e.status).HasMaxLength(20);
+
+            entity.HasOne(d => d.customer).WithMany(p => p.Customer_Orders)
+                .HasForeignKey(d => d.customer_id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_BOOKING_TOUR");
+                .HasConstraintName("FK_Customer_Order_Customer");
 
-            entity.HasOne(d => d.user).WithMany(p => p.BOOKINGs)
-                .HasForeignKey(d => d.user_id)
+            entity.HasOne(d => d.employee).WithMany(p => p.Customer_Orders)
+                .HasForeignKey(d => d.employee_id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_BOOKING_USER");
+                .HasConstraintName("FK_Customer_Order_Employee");
         });
 
-        modelBuilder.Entity<CAR>(entity =>
+        modelBuilder.Entity<Employee>(entity =>
         {
-            entity.ToTable("CAR");
+            entity.ToTable("Employee");
 
-            entity.Property(e => e.driver_name).HasMaxLength(50);
-            entity.Property(e => e.type).HasMaxLength(40);
+            entity.Property(e => e.address).HasMaxLength(50);
+            entity.Property(e => e.email).HasMaxLength(30);
+            entity.Property(e => e.name).HasMaxLength(30);
+            entity.Property(e => e.password).HasMaxLength(20);
+            entity.Property(e => e.phone).HasMaxLength(11);
+            entity.Property(e => e.username).HasMaxLength(30);
+
+            entity.HasOne(d => d.role).WithMany(p => p.Employees)
+                .HasForeignKey(d => d.role_id)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Employee_Role");
         });
 
-        modelBuilder.Entity<FLIGHT>(entity =>
+        modelBuilder.Entity<Role>(entity =>
         {
-            entity.ToTable("FLIGHT");
-
-            entity.Property(e => e.airline).HasMaxLength(40);
-            entity.Property(e => e.arrival).HasColumnType("datetime");
-            entity.Property(e => e.code).HasMaxLength(20);
-            entity.Property(e => e.departure).HasColumnType("datetime");
-            entity.Property(e => e.flight_from).HasMaxLength(50);
-            entity.Property(e => e.flight_to).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<HOTEL>(entity =>
-        {
-            entity.ToTable("HOTEL");
-
-            entity.Property(e => e.adresss).HasMaxLength(50);
-            entity.Property(e => e.name).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<PLACE>(entity =>
-        {
-            entity.ToTable("PLACES");
-
-            entity.Property(e => e.name).HasMaxLength(50);
-            entity.Property(e => e.type).HasMaxLength(20);
-        });
-
-        modelBuilder.Entity<ROLE>(entity =>
-        {
-            entity.ToTable("ROLE");
+            entity.ToTable("Role");
 
             entity.Property(e => e.name).HasMaxLength(30);
         });
 
-        modelBuilder.Entity<TOUR>(entity =>
+        modelBuilder.Entity<Tour>(entity =>
         {
-            entity.ToTable("TOUR");
+            entity.ToTable("Tour");
 
-            entity.Property(e => e.code).HasMaxLength(20);
-            entity.Property(e => e.description).HasMaxLength(200);
-            entity.Property(e => e.details).HasMaxLength(100);
-            entity.Property(e => e.finish_destination).HasMaxLength(50);
-            entity.Property(e => e.start_destination).HasMaxLength(50);
+            entity.Property(e => e.duration).HasMaxLength(30);
+            entity.Property(e => e.name).HasMaxLength(50);
+            entity.Property(e => e.picture).HasMaxLength(100);
 
-            entity.HasOne(d => d.car).WithMany(p => p.TOURs)
-                .HasForeignKey(d => d.car_id)
+            entity.HasOne(d => d.category).WithMany(p => p.Tours)
+                .HasForeignKey(d => d.category_id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TOUR_CAR");
-
-            entity.HasOne(d => d.flight).WithMany(p => p.TOURs)
-                .HasForeignKey(d => d.flight_id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TOUR_FLIGHT");
-
-            entity.HasOne(d => d.hotel).WithMany(p => p.TOURs)
-                .HasForeignKey(d => d.hotel_id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TOUR_HOTEL");
-
-            entity.HasOne(d => d.place).WithMany(p => p.TOURs)
-                .HasForeignKey(d => d.place_id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_TOUR_PLACES");
+                .HasConstraintName("FK_Tour_Category");
         });
 
-        modelBuilder.Entity<USER>(entity =>
+        modelBuilder.Entity<Tour_Detail>(entity =>
         {
-            entity.ToTable("USER");
+            entity.Property(e => e.code).HasMaxLength(20);
+            entity.Property(e => e.start_destination).HasMaxLength(30);
+            entity.Property(e => e.transport).HasMaxLength(50);
 
-            entity.Property(e => e.address).HasMaxLength(50);
-            entity.Property(e => e.email).HasMaxLength(20);
-            entity.Property(e => e.name).HasMaxLength(50);
-            entity.Property(e => e.password).HasMaxLength(30);
-            entity.Property(e => e.phone).HasMaxLength(20);
-            entity.Property(e => e.username).HasMaxLength(30);
-
-            entity.HasOne(d => d.role).WithMany(p => p.USERs)
-                .HasForeignKey(d => d.role_id)
+            entity.HasOne(d => d.tour).WithMany(p => p.Tour_Details)
+                .HasForeignKey(d => d.tour_id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_USER_ROLE");
+                .HasConstraintName("FK_Tour_Details_Tour");
+        });
+
+        modelBuilder.Entity<Tour_Details_Image>(entity =>
+        {
+            entity.ToTable("Tour_Details_Image");
+
+            entity.Property(e => e.name).HasMaxLength(100);
+            entity.Property(e => e.url).HasMaxLength(100);
+
+            entity.HasOne(d => d.tour_details).WithMany(p => p.Tour_Details_Images)
+                .HasForeignKey(d => d.tour_details_id)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Tour_Details_Image_Tour_Details");
         });
 
         OnModelCreatingPartial(modelBuilder);

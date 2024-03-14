@@ -7,7 +7,7 @@
  .tour-detail-part {
     display: flex;
     text-align: center;
-    justify-content: center;
+    padding-left: 100px;
     gap: 100px;
  }
  .tour-details {
@@ -19,6 +19,7 @@
     padding: 10px;
  }
  .tour-infos {
+    position: fixed;
     display: grid;
     grid-template-rows: auto auto auto auto;
     padding: 50px;

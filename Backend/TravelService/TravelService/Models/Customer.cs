@@ -5,11 +5,13 @@ using System.Collections.Generic;
 
 namespace TravelService.Models;
 
-public partial class USER
+public partial class Customer
 {
     public int id { get; set; }
 
     public string name { get; set; }
+
+    public DateOnly? dob { get; set; }
 
     public string address { get; set; }
 
@@ -21,9 +23,5 @@ public partial class USER
 
     public string password { get; set; }
 
-    public int role_id { get; set; }
-
-    public virtual ICollection<BOOKING> BOOKINGs { get; set; } = new List<BOOKING>();
-
-    public virtual ROLE role { get; set; }
+    public virtual ICollection<Customer_Order> Customer_Orders { get; set; } = new List<Customer_Order>();
 }

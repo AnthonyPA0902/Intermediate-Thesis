@@ -5,13 +5,11 @@ using System.Collections.Generic;
 
 namespace TravelService.Models;
 
-public partial class PLACE
+public partial class Category
 {
     public int id { get; set; }
 
     public string name { get; set; }
 
-    public string type { get; set; }
-
-    public virtual ICollection<TOUR> TOURs { get; set; } = new List<TOUR>();
+    public virtual ICollection<Tour> Tours { get; set; } = new List<Tour>();
 }

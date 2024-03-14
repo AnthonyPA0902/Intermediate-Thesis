@@ -16,35 +16,35 @@
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "[dbo].[BOOKING]",
+         "Name": "[dbo].[Category]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[CAR]",
+         "Name": "[dbo].[Customer]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[FLIGHT]",
+         "Name": "[dbo].[Customer_Order]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[HOTEL]",
+         "Name": "[dbo].[Employee]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[PLACES]",
+         "Name": "[dbo].[Role]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[ROLE]",
+         "Name": "[dbo].[Tour]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[TOUR]",
+         "Name": "[dbo].[Tour_Details]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[USER]",
+         "Name": "[dbo].[Tour_Details_Image]",
          "ObjectType": 0
       }
    ],
@@ -66,6 +66,7 @@
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
    "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
    "UseSchemaFolders": false,
    "UseSchemaNamespaces": false,
    "UseSpatial": false,

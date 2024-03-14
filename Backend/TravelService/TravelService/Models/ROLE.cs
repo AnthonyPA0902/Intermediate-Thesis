@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace TravelService.Models;
 
-public partial class ROLE
+public partial class Role
 {
     public int id { get; set; }
 
     public string name { get; set; }
 
-    public virtual ICollection<USER> USERs { get; set; } = new List<USER>();
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
