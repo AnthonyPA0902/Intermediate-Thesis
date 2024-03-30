@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json.Serialization;
 using TravelService.Models;
+using TravelService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

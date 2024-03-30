@@ -18,15 +18,16 @@ namespace TravelService.Controllers
         [HttpGet]
         public IActionResult GetTour([FromQuery] int page = 1, [FromQuery] int pageSize = 6)
         {
-            var totalItems = _dbContext.Tours.Count();
-            var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+			var totalItems = _dbContext.Tours.Count(t => t.category_id == 1);
+			var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
 
-            var tours = _dbContext.Tours
-                                .Skip((page - 1) * pageSize)
-                                .Take(pageSize)
-                                .ToList();
+			var tours = _dbContext.Tours
+								   .Where(t => t.category_id == 1)
+								   .Skip((page - 1) * pageSize)
+								   .Take(pageSize)
+								   .ToList();
 
-            var response = new
+			var response = new
             {
                 TotalItems = totalItems,
                 TotalPages = totalPages,

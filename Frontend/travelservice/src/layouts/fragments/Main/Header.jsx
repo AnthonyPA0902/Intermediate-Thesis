@@ -53,6 +53,11 @@ const Header = () => {
             style10.rel = 'stylesheet';
             style10.href = '/assets/css/checkout.css';
             document.head.appendChild(style10);
+
+            const style11 = document.createElement('link');
+            style11.rel = 'stylesheet';
+            style11.href = '/assets/css/userinfo.css';
+            document.head.appendChild(style11);
     });
     return (
         <div>

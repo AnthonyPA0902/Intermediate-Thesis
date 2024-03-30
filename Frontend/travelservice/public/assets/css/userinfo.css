@@ -1,0 +1,65 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    font-size: 30px;
+    font-weight: 800;
+    color: black;
+}
+.nav-link {
+    background-color: black;
+}
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+}
+.edit-button {
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: chocolate;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+.orders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+.orders th {
+    background-color:lightblue;
+    color: #333;
+    padding: 8px;
+    text-align: left;
+}
+
+.orders td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+.orders tr:nth-child(even) {
+    background-color:khaki;
+}
+
+.orders tr:hover {
+    background-color: blanchedalmond; 
+}
+.hidden {
+    display: none;
+}

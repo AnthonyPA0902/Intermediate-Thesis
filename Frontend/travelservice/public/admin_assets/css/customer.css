@@ -5,3 +5,11 @@
 .table-bordered thead th, .table-bordered td {
      border: 1px solid #dee2e6;
 }
+
+button {
+    padding: 5px 10px;
+    background-color: cornflowerblue;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}

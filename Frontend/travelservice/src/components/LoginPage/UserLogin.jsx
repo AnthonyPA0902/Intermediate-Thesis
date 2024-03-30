@@ -63,8 +63,7 @@ const Login = () => {
                                                 <label className="form-label" htmlFor="password">Mật Khẩu</label>
                                                 <input type="password" id="password" className="form-control" name="password" value={formData.password} onChange={handleInputChange}/>
                                             </div>
-                                            {error && (<div className="text-danger">Bạn đã nhập sai email hoặc mật khẩu</div>
-)}
+                                            {error && (<div className="text-danger">Bạn đã nhập sai email hoặc mật khẩu</div>)}
                                             <div className="text-center pt-1 mb-5 pb-1">
                                                 <button className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Đăng Nhập</button>
                                                 <a className="text-muted" href="/forget">Quên Mật Khẩu?</a>

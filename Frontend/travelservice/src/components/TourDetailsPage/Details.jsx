@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Details = () => {
     const location = useLocation();
@@ -54,7 +54,7 @@ const Details = () => {
                     <p>Phương tiện : {tourDetail.transport}</p>
                     <p>Xuất Phát : Từ {tourDetail.start_destination}</p>
                     <p>Giá : {tourInfo.price} đồng</p>
-                    <a href="/checkout"><button type="submit">Đặt Tour</button></a>
+                    <Link to={`/checkout?id=${id}`}><button type="submit">Đặt Tour</button></Link>
                 </div>
             </div>
         </div>

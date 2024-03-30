@@ -22,10 +22,4 @@ public partial class Employee
     public string username { get; set; }
 
     public string password { get; set; }
-
-    public int role_id { get; set; }
-
-    public virtual ICollection<Customer_Order> Customer_Orders { get; set; } = new List<Customer_Order>();
-
-    public virtual Role role { get; set; }
 }

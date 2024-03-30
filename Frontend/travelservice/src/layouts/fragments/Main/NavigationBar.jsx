@@ -1,16 +1,44 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
+    const [customerName, setCustomerName] = useState(null);
+    const [customerId, setCustomerId] = useState(null); 
 
-    const handleLogout = function() {
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            const decodedToken = decodeToken(token);
+            if (decodedToken) {
+                setCustomerId(decodedToken.customer_id);
+                setCustomerName(decodedToken.customer_name);
+            }
+        }
+    }, []); 
+
+    const handleLogout = () => {
         localStorage.removeItem("token");
         window.location.href = '/';
-    }
+    };
 
-    const tokenExist = function() {
+    const tokenExist = () => {
         const token = localStorage.getItem("token");
         return token ? 1 : 0;
-    }
+    };
+
+    const decodeToken = (token) => {
+        try {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            return null;
+        }
+    };
 
     if (tokenExist() === 1) {
         return (
@@ -22,7 +50,8 @@ const NavigationBar = () => {
                                 <div className="col-md-12">
                                     <div className="header_information">
                                         <ul>
-                                            <li><a href="user-info.html"><img src="/assets/images/user-profile.png" alt="3.png"/>Hồ Sơ</a></li>
+                                            <span style={{fontWeight: 600, color: "black"}}>Xin chào, {customerName}</span>
+                                            <li><Link to={`/userinfo?id=${customerId}`}><img src="/assets/images/user-profile.png" alt="3.png"/>Hồ Sơ</Link></li>
                                             <li><a href="/" onClick={handleLogout}><img src="/assets/images/logout.png" alt="3.png"/>Đăng Xuất</a></li>
                                         </ul>
                                     </div>
@@ -115,7 +144,6 @@ const NavigationBar = () => {
                 </div>
             </header>
         );
-
     }
 };
 

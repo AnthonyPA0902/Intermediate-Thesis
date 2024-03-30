@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TravelService.Dtos;
@@ -18,7 +19,7 @@ namespace TravelService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TourDetailsWithTourInfo>> GetTourDetail(int id)
+        public async Task<ActionResult<TourDetailsWithTourInfoDto>> GetTourDetail(int id)
         {
             var tourDetail = await _dbContext.Tour_Details
                 .Include(td => td.Tour_Details_Images)
@@ -43,7 +44,7 @@ namespace TravelService.Controllers
               })
               .ToList();
 
-            var tourWithImagesDto = new TourDetailsWithTourInfo
+            var tourWithImagesDto = new TourDetailsWithTourInfoDto
             {
                 TourDetail = tourDetail,
                 TourInfo = tour,

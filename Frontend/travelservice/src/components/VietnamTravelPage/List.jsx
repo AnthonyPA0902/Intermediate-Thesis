@@ -46,7 +46,7 @@ const List = ({ searchResults }) => {
         <div>
             <section id="tour-list">
                 {products.map((product) => (
-                    <div className="col-md-4 col-sm-6 col-xs-12 tour-item" key={product.id}>
+                    <div className="col-md-4 col-sm-6 col-xs-12 tour-item" style={{ marginBottom: 30 }} key={product.id}>
                         <Link to={`/tourdetails?id=${product.id}`} className="card-link"> 
                             <div className="card h-100">
                             <img className="card-img-top" src={`/assets/images/tour/${product.picture}`} alt="Card cap"/>

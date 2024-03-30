@@ -21,8 +21,6 @@ public partial class TravelServiceManagementDBContext : DbContext
 
     public virtual DbSet<Employee> Employees { get; set; }
 
-    public virtual DbSet<Role> Roles { get; set; }
-
     public virtual DbSet<Tour> Tours { get; set; }
 
     public virtual DbSet<Tour_Detail> Tour_Details { get; set; }
@@ -54,18 +52,17 @@ public partial class TravelServiceManagementDBContext : DbContext
         {
             entity.ToTable("Customer_Order");
 
-            entity.Property(e => e.payment_code).HasMaxLength(20);
-            entity.Property(e => e.status).HasMaxLength(20);
+            entity.Property(e => e.payment).HasMaxLength(30);
 
             entity.HasOne(d => d.customer).WithMany(p => p.Customer_Orders)
                 .HasForeignKey(d => d.customer_id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Customer_Order_Customer");
 
-            entity.HasOne(d => d.employee).WithMany(p => p.Customer_Orders)
-                .HasForeignKey(d => d.employee_id)
+            entity.HasOne(d => d.tour).WithMany(p => p.Customer_Orders)
+                .HasForeignKey(d => d.tour_id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Customer_Order_Employee");
+                .HasConstraintName("FK_Customer_Order_Tour");
         });
 
         modelBuilder.Entity<Employee>(entity =>
@@ -78,18 +75,6 @@ public partial class TravelServiceManagementDBContext : DbContext
             entity.Property(e => e.password).HasMaxLength(20);
             entity.Property(e => e.phone).HasMaxLength(11);
             entity.Property(e => e.username).HasMaxLength(30);
-
-            entity.HasOne(d => d.role).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.role_id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Employee_Role");
-        });
-
-        modelBuilder.Entity<Role>(entity =>
-        {
-            entity.ToTable("Role");
-
-            entity.Property(e => e.name).HasMaxLength(30);
         });
 
         modelBuilder.Entity<Tour>(entity =>

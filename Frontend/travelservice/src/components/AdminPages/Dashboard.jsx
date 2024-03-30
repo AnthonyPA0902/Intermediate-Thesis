@@ -1,10 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 
 const MainDashboard = () => {
+    const [adminName, setAdminName] = useState(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
+
+    const decodeToken = (token) => {
+        try {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        } catch (error) {
+            console.error("Error decoding token:", error);
+            return null;
+        }
+    };
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            const decodedToken = decodeToken(token);
+            if (decodedToken) {
+                setAdminName(decodedToken.admin_name);
+            }
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.href = '/admin/login';
+    };
 
     return (
         <div className="sb-nav-fixed">
@@ -21,7 +51,7 @@ const MainDashboard = () => {
                                 <i className="fas fa-user fa-fw"></i>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item href="/admin/login">Đăng xuất</Dropdown.Item>
+                                <Dropdown.Item onClick={handleLogout}>Đăng xuất</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </li>
@@ -32,37 +62,35 @@ const MainDashboard = () => {
                 <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div className="sb-sidenav-menu">
                         <div className="nav">
-                            <a className="nav-link" href="index.html">
+                        <a className="nav-link" href="/admin/dashboard">
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Điều Khiển
                             </a>
                             <div className="sb-sidenav-menu-heading">Quản Lý</div>
-                                <a className="nav-link" href="/admin/dashboard/customer">
+                                <a className="nav-link" href="/admin/customer">
                                     <div className="sb-nav-link-icon"><i className="fas fa-chart-area"></i></div>
-                                    Nhân Viên
-                                </a>
-                                <a className="nav-link" href="/admin/dashboard/customer">
-                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                     Khách Hàng
                                 </a>
-                                <a className="nav-link" href="/admin/dashboard/customer">
+                                <a className="nav-link" href="/admin/employee">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                    Nhân Viên
+                                </a>
+                                <a className="nav-link" href="/admin/tour">
                                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                     Tour
                                 </a>
-                            <div className="sb-sidenav-menu-heading">Thống Kê</div>
-                                <a className="nav-link" href="/admin/dashboard/customer">
-                                    <div className="sb-nav-link-icon"><i className="fas fa-chart-area"></i></div>
-                                    Doanh Thu
-                                </a>
-                                <a className="nav-link" href="/admin/dashboard/customer">
+                                <a className="nav-link" href="/admin/tourdetails">
                                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
-                                    Số Lượng Khách Hàng
-                            </a>
+                                    Chi Tiết Tour
+                                </a>
+                                <a className="nav-link" href="/admin/tourdetailsimage">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                    Hình Ảnh Tour
+                                </a>
                         </div>
                     </div>
                     <div className="sb-sidenav-footer">
-                        <div className="small">Đăng Nhập Bởi:</div>
-                        Nguyễn Phước An
+                        <div className="small">Đăng Nhập Bởi: <span style={{fontWeight:800, color: "white"}}>{adminName}</span></div>
                     </div>
                 </nav>
             </div>
@@ -78,7 +106,7 @@ const MainDashboard = () => {
                                 <div className="card bg-primary text-white mb-4">
                                     <div className="card-body">Nhân Viên</div>
                                     <div className="card-footer d-flex align-items-center justify-content-between">
-                                        <a className="small text-white stretched-link" href="/admin/dashboard/customer">Xem Thêm</a>
+                                        <a className="small text-white stretched-link" href="/admin/employee">Xem Thêm</a>
                                         <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -87,7 +115,7 @@ const MainDashboard = () => {
                                 <div className="card bg-warning text-white mb-4">
                                     <div className="card-body">Khách Hàng</div>
                                     <div className="card-footer d-flex align-items-center justify-content-between">
-                                        <a className="small text-white stretched-link" href="/admin/dashboard/customer">Xem Thêm</a>
+                                        <a className="small text-white stretched-link" href="/admin/customer">Xem Thêm</a>
                                         <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -96,16 +124,16 @@ const MainDashboard = () => {
                                 <div className="card bg-success text-white mb-4">
                                     <div className="card-body">Tour</div>
                                     <div className="card-footer d-flex align-items-center justify-content-between">
-                                        <a className="small text-white stretched-link" href="/admin/dashboard/customer">Xem Thêm</a>
+                                        <a className="small text-white stretched-link" href="/admin/tour">Xem Thêm</a>
                                         <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-6">
                                 <div className="card bg-danger text-white mb-4">
-                                    <div className="card-body">Địa Điểm</div>
+                                    <div className="card-body">Chi Tiết Tour</div>
                                     <div className="card-footer d-flex align-items-center justify-content-between">
-                                        <a className="small text-white stretched-link" href="/admin/dashboard/customer">Xem Thêm</a>
+                                        <a className="small text-white stretched-link" href="/admin/tourdetails">Xem Thêm</a>
                                         <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

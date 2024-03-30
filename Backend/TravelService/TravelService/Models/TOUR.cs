@@ -19,6 +19,8 @@ public partial class Tour
 
     public int category_id { get; set; }
 
+    public virtual ICollection<Customer_Order> Customer_Orders { get; set; } = new List<Customer_Order>();
+
     public virtual ICollection<Tour_Detail> Tour_Details { get; set; } = new List<Tour_Detail>();
 
     public virtual Category category { get; set; }

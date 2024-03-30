@@ -2,7 +2,7 @@
 
 namespace TravelService.Dtos
 {
-    public class TourDetailsWithTourInfo
+    public class TourDetailsWithTourInfoDto
     {
         public Tour_Detail TourDetail { get; set; }
         public Tour TourInfo { get; set; }

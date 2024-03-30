@@ -3,14 +3,18 @@
     justify-content: center;
     align-items: center;
     min-height: 70vh;
-    gap: 200px;
+    gap: 100px;
  }
  .order-info {
     border: 1px solid black;
     padding: 50px;
  }
+ .calculate-price {
+   border: 1px solid black;
+   padding: 50px;
+ }
  .checkout-payment {
-    border: 1px solid darkgrey;
+    border: 1px solid black;
     padding: 50px;
  }
  .checkout-button {

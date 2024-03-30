@@ -11,17 +11,17 @@ public partial class Customer_Order
 
     public DateOnly? date { get; set; }
 
-    public string payment_code { get; set; }
-
-    public string status { get; set; }
+    public string payment { get; set; }
 
     public long? total { get; set; }
 
+    public int? num_of_people { get; set; }
+
     public int customer_id { get; set; }
 
-    public int employee_id { get; set; }
+    public int tour_id { get; set; }
 
     public virtual Customer customer { get; set; }
 
-    public virtual Employee employee { get; set; }
+    public virtual Tour tour { get; set; }
 }

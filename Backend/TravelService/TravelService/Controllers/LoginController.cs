@@ -48,7 +48,13 @@ namespace TravelService.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, customer.username),
+                    new Claim("customer_id", customer.id.ToString()),
+                    new Claim("customer_name", customer.name.ToString()),
+                    new Claim("customer_dob", customer.dob.ToString()),
+                    new Claim("customer_address", customer.address.ToString()),
+                    new Claim("customer_phone", customer.phone.ToString()),
+                    new Claim("customer_email", customer.email.ToString()),
+                    new Claim("customer_username", customer.username)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

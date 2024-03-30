@@ -1,10 +1,10 @@
 import React from "react";
-import Customer from "../../components/AdminPages/Customer";
+import AdminCustomer from "../../components/AdminPages/Customer";
 
 const CustomerAdmin = () => {
     return (
         <div>
-            <Customer />
+            <AdminCustomer />
         </div>
     );
 };

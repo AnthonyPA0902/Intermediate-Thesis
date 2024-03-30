@@ -69,6 +69,10 @@
               "target": "Package",
               "version": "[7.4.0, )"
             },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "System.Security.Cryptography.Cng": {
               "target": "Package",
               "version": "[5.0.0, )"

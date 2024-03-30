@@ -32,10 +32,6 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Role]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[Tour]",
          "ObjectType": 0
       },

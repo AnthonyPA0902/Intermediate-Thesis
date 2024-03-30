@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const MainDashboard = () => {
+const AdminCustomer = () => {
+    const [customer, setCustomer] = useState([]);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
+
+    useEffect(() => {
+        fetch('https://localhost:7026/api/admin/customer', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            setCustomer(data);
+        }).catch((error) => console.error(error));
+    }, [])
 
     return (
         <div className="sb-nav-fixed">
         <nav className="sb-topnav navbar navbar-expand navbar-dark bg-primary">
             <img src="/assets/images/travel-logo.png" style={{ width: "60px", height: "60px" }} alt="logo" />
             <a className="navbar-brand ps-3" style={{ fontWeight: "700" }} href="/admin/dashboard">Around The World</a>
-            <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i className="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             </form>
             <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -31,38 +52,33 @@ const MainDashboard = () => {
             <div id="layoutSidenav_nav">
                 <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div className="sb-sidenav-menu">
-                        <div className="nav">
-                            <a className="nav-link" href="index.html">
+                    <div className="nav">
+                            <a className="nav-link" href="/admin/dashboard">
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Điều Khiển
                             </a>
                             <div className="sb-sidenav-menu-heading">Quản Lý</div>
-                                <a className="nav-link" href="/admin/dashboard/customer">
+                            <a className="nav-link" href="/admin/customer">
                                     <div className="sb-nav-link-icon"><i className="fas fa-chart-area"></i></div>
-                                    Nhân Viên
-                                </a>
-                                <a className="nav-link" href="/admin/dashboard/customer">
-                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                     Khách Hàng
                                 </a>
-                                <a className="nav-link" href="/admin/dashboard/customer">
+                                <a className="nav-link" href="/admin/employee">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                    Nhân Viên
+                                </a>
+                                <a className="nav-link" href="/admin/tour">
                                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                     Tour
                                 </a>
-                            <div className="sb-sidenav-menu-heading">Thống Kê</div>
-                                <a className="nav-link" href="/admin/dashboard/customer">
-                                    <div className="sb-nav-link-icon"><i className="fas fa-chart-area"></i></div>
-                                    Doanh Thu
-                                </a>
-                                <a className="nav-link" href="/admin/dashboard/customer">
+                                <a className="nav-link" href="/admin/tourdetails">
                                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
-                                    Số Lượng Khách Hàng
-                            </a>
+                                    Chi Tiết Tour
+                                </a>
+                                <a className="nav-link" href="/admin/tourdetailsimage">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                    Hình Ảnh Tour
+                                </a>
                         </div>
-                    </div>
-                    <div className="sb-sidenav-footer">
-                        <div className="small">Đăng Nhập Bởi:</div>
-                        Nguyễn Phước An
                     </div>
                 </nav>
             </div>
@@ -71,43 +87,40 @@ const MainDashboard = () => {
                     <div className="container mt-4">
                         <div className="row mb-3">
                             <div className="col-md-4">
-                                <input type="text" className="form-control" id="searchInput" placeholder="Search..." />
                             </div>
-                            <div className="col-md-4">
-                                <select className="form-select" id="filterSelect">
-                                    <option value="">Filter by...</option>
-                                    <option value="1">ID</option>
-                                    <option value="2">Name</option>
-                                    <option value="3">Age</option>
-                                </select>
+                            <div style={{marginTop: '20px', marginBottom: '10px'}}>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
-                                <table className="table table-bordered">
-                                    <thead className="table-header">
+                                <table className="table table-bordered">    
+                                    <thead className="table-header" style={{backgroundColor: "goldenrod"}}>
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">Age</th>
+                                            <th scope="col">Birthday</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">UserName</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody id="tableBody">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>John Doe</td>
-                                            <td>25</td>
+                                    {customer.map((cus, index) => (
+                                        <tr key={index}>
+                                            <td>{index+1}</td>
+                                            <td>{cus.name}</td>
+                                            <td>{cus.dob}</td>
+                                            <td>{cus.address}</td>
+                                            <td>{cus.phone}</td>
+                                            <td>{cus.email}</td>
+                                            <td>{cus.username}</td>
+                                            <td>
+                                                <Link to={`/admin/customer/delete?id=${cus.id}`}><img src='/admin_assets/assets/img/delete-icon.png' alt="icon button"></img></Link>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jane Smith</td>
-                                            <td>30</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Bob Johnson</td>
-                                            <td>40</td>
-                                        </tr>
+                                    ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -132,4 +145,4 @@ const MainDashboard = () => {
     );
 }
 
-export default MainDashboard;
+export default AdminCustomer;
