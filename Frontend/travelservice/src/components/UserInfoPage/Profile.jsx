@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 
 const Profile = () => {
@@ -96,7 +96,6 @@ const Profile = () => {
                         <p>Địa Chỉ: {customerAddress}</p>
                         <p>Email: {customerEmail}</p>
                         <p>Username: {customerUsername}</p>
-                     {/* <button className="edit-button" type="button">Cập Nhật Thông Tin</button> */}
                     </div>
                 </div>
             </section>

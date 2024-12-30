@@ -94,6 +94,10 @@ const AdminTourDetails = () => {
                                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                     Hình Ảnh Tour
                                 </a>
+                                <a className="nav-link" href="/admin/order">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                    Đơn Đặt
+                                </a>
                         </div>
                     </div>
                 </nav>
@@ -105,6 +109,7 @@ const AdminTourDetails = () => {
                             <div className="col-md-4">
                             </div>
                             <div style={{marginTop: '20px', marginBottom: '10px'}}>
+                            <h1>QUẢN LÝ CHI TIẾT TOUR</h1>
                                 <a href="/admin/tourdetails/create"><button type="button">THÊM MỚI</button></a>
                             </div>
                         </div>

@@ -58,6 +58,11 @@ const Header = () => {
             style11.rel = 'stylesheet';
             style11.href = '/assets/css/userinfo.css';
             document.head.appendChild(style11);
+
+            const style12 = document.createElement('link');
+            style12.rel = 'stylesheet';
+            style12.href = '/admin_assets/css/create.css'; 
+            document.head.appendChild(style12);
     });
     return (
         <div>

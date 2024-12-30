@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FuqFfjLdhxiMqt4UAxibc5AYPWyMwlRKbY7XawfBlqnZyTpS9hJevkEYs01dTVLIAwfSkKR7a191F7QD8pATLQ==",
+  "dgSpecHash": "Y6nJcYhw/Mc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\Intermediate Thesis\\Project\\Backend\\TravelService\\TravelService\\TravelService.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\Thesis\\Niên Luận\\Backend\\TravelService\\TravelService\\TravelService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

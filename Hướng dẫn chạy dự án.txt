@@ -1,0 +1,35 @@
+***HƯỚNG DẪN CHẠY DỰ ÁN****
+
+Để chạy dự án thì phải cần Visual Studio 2022, Visual Studio Code và SQL Server Management Studio 
+
+Bước 1 : Vào SQL Server Management Studio và chạy file CSDL sẽ tạo được một CSDL tên TravelServiceManagementDB
+
+Bước 2 : Chạy solution trong thư mục backend bằng Visual Studio 2022. Làm theo hướng dẫn sau để kết nối CSDL 
+
++ VÀO FILE PROGRAM.CS ( Đổi TravelServiceDBContext sao cho phù hợp với CSDL )
+using TravelServiceManagement.Models;
+builder.Services.AddSqlServer<TravelServiceDBContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
+
++ VÀO FILE APPSETTINGS.JSON ( Đổi tên Data Soure dựa theo máy của mình và tên Catalog theo tên Database )
+ "ConnectionStrings": {
+   "DefaultConnection": "Data Source=LAPTOP-E47JIK8O\\MSSQLSERVER02;Initial Catalog=TravelServiceDB;Integrated Security=True;TrustServerCertificate=True"
+ },
+
+LỖI GLOBAL VARIATION 
+Mở file travelservice.csropj  and change to global variation thành FALSE
+
+Bước 3 : Chạy dự án phần backend theo https
+
+Bước 4 : Mở thư mục Frontend bằng Visual Studio Code
+
+Bước 5 : Mở terminal và nhập lệnh cd travelservice
+
+Bước 6 : Nhập lệnh npmstart
+
+Bước 7 : Dự án sẽ được chạy và ta sẽ vào được trang chủ chính
+
+Các thông tin phụ :
++ Để vào dashboard thì nhập vào url : https://localhost:3000/admin/login
++ TÀI KHOẢN ĐĂNG NHẬP KHÁCH HÀNG: huyhoang, MẬT KHẨU: huyhoang
++ TÀI KHOẢN ĐĂNG NHẬP NHÂN VIÊN: minhan1405, MẬT KHẨU: 14052000
++ Để có thể thực hiện được chức năng gửi mail thành công thì phải tạo tk khách hàng bằng mail thực của mình

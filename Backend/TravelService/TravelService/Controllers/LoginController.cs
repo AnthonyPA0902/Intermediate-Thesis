@@ -33,7 +33,7 @@ namespace TravelService.Controllers
 
             return Ok(new {Token = token });
         }
-
+        
         private string GenerateJwtToken(Customer customer)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -48,7 +48,7 @@ namespace TravelService.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim("customer_id", customer.id.ToString()),
+                    new Claim("custsomer_id", customer.id.ToString()),
                     new Claim("customer_name", customer.name.ToString()),
                     new Claim("customer_dob", customer.dob.ToString()),
                     new Claim("customer_address", customer.address.ToString()),

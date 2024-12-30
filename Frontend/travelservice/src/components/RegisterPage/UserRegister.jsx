@@ -92,9 +92,9 @@ const UserRegister = () => {
                                 <div className="card-body p-md-5 mx-md-4">
                                     <div className="text-center">
                                         <a href="/"><img src="/assets/images/travel-logo.png" style={{ width: '185px' }} alt="travel-pic" /></a>
+                                        <h1 style={{textAlign: 'center'}}>ĐĂNG KÝ</h1>
                                     </div>
                                     <form onSubmit={handleSubmit}>
-                                        <p>Hãy Tạo Tài Khoản Của Bạn</p>
                                         <div className="form-outline mb-4">
                                             <label className="form-label" htmlFor="name">Họ Tên</label>
                                             <input type="text" id="name" name="name" className="form-control" value={formData.name} onChange={handleChange} />
@@ -131,8 +131,7 @@ const UserRegister = () => {
                                             {error.password && <div className="text-danger">{error.password}</div>}
                                         </div>
                                         <div className="d-flex align-items-center justify-content-center pb-4">
-                                            <p className="mb-0 me-2">Đã Có Tài Khoản?</p>&nbsp;&nbsp;
-                                            <button type="submit" className="btn btn-outline-danger">Đăng Nhập</button>
+                                            <button type="submit" className="btn btn-outline-danger">Đăng Ký</button>
                                         </div>
                                     </form>
                                 </div>

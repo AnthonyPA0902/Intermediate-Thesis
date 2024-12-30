@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\Intermediate Thesis\\Project\\Backend\\TravelService\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\Thesis\\Ni\u00EAn Lu\u1EADn\\Backend\\TravelService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E922216A-00CD-4181-8D76-E99D4EFD586B}|TravelService\\TravelService.csproj|c:\\users\\admin\\onedrive\\desktop\\thesis\\ni\u00EAn lu\u1EADn\\backend\\travelservice\\travelservice\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E922216A-00CD-4181-8D76-E99D4EFD586B}|TravelService\\TravelService.csproj|solutionrelative:travelservice\\controllers\\checkoutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CheckoutController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\Thesis\\Ni\u00EAn Lu\u1EADn\\Backend\\TravelService\\TravelService\\Controllers\\CheckoutController.cs",
+              "RelativeDocumentMoniker": "TravelService\\Controllers\\CheckoutController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\Desktop\\Thesis\\Ni\u00EAn Lu\u1EADn\\Backend\\TravelService\\TravelService\\Controllers\\CheckoutController.cs",
+              "RelativeToolTip": "TravelService\\Controllers\\CheckoutController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAkwFoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-18T06:14:44.261Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

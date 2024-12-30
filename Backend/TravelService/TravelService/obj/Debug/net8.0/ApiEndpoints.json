@@ -290,6 +290,89 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TravelService.Controllers.Admin.AdminOrderController",
+    "Method": "GetAllCustomerOrder",
+    "RelativePath": "api/admin/order",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TravelService.Models.Customer_Order, TravelService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TravelService.Controllers.Admin.AdminOrderController",
+    "Method": "GetDeleteOrder",
+    "RelativePath": "api/admin/order/delete/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TravelService.Models.Customer_Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TravelService.Controllers.Admin.AdminOrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/admin/order/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TravelService.Models.Customer_Order",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "TravelService.Controllers.Admin.AdminTourController",
     "Method": "GetAllTour",
     "RelativePath": "api/admin/tour",
@@ -909,26 +992,6 @@
   },
   {
     "ContainingType": "TravelService.Controllers.CheckoutController",
-    "Method": "ProcessCheckoutVNPay",
-    "RelativePath": "api/checkout",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TravelService.Controllers.CheckoutController",
-    "Method": "PaymentCallBack",
-    "RelativePath": "api/checkout",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TravelService.Controllers.CheckoutController",
     "Method": "GetCheckoutInfo",
     "RelativePath": "api/checkout/{id}",
     "HttpMethod": "GET",
@@ -1006,6 +1069,103 @@
     "ReturnTypes": [
       {
         "Type": "System.Int64",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TravelService.Controllers.CheckoutController",
+    "Method": "PaymentCallBack",
+    "RelativePath": "api/checkout/payment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TravelService.Controllers.CheckoutController",
+    "Method": "ProcessCheckoutVNPay",
+    "RelativePath": "api/checkout/vnpay",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TravelService.Controllers.CustomerEditController",
+    "Method": "GetEditCustomer",
+    "RelativePath": "api/customer/edit/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TravelService.Models.Customer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TravelService.Controllers.CustomerEditController",
+    "Method": "EditCustomer",
+    "RelativePath": "api/customer/edit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customer",
+        "Type": "TravelService.Models.Customer",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TravelService.Models.Customer",
         "MediaTypes": [
           "text/plain",
           "application/json",

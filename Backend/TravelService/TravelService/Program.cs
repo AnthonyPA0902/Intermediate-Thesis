@@ -39,6 +39,9 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IVnPayService, VnPayService>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

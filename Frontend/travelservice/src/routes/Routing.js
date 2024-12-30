@@ -28,6 +28,9 @@ import TourDetailsImageAdmin from '../pages/Admin/TourDetailsImage';
 import CreateTourDetailsImage from '../pages/Admin/TourDetailsImageCreate';
 import EditTourDetailsImage from '../pages/Admin/TourDetailsImageEdit';
 import DeleteTourDetailsImage from '../pages/Admin/TourDetailsImageDelete';
+import OrderAdmin from '../pages/Admin/Order';
+import DeleteOrder from '../pages/Admin/OrderDelete';
+import EditCustomer from '../pages/CustomerEdit';
 
 //Routes
 const NormalRoutes = [
@@ -37,6 +40,7 @@ const NormalRoutes = [
     { path: '/tourdetails', component: TourDeatils},
     { path: '/checkout', component: TravelCheckOut},
     { path: '/userinfo', component: UserInfo},
+    { path: '/customer/edit', component: EditCustomer},
 ];
 
 const AuthRoutes = [
@@ -69,6 +73,8 @@ const AdminRoutes = [
     { path: '/admin/tourdetailsimage/create', component: CreateTourDetailsImage },
     { path: '/admin/tourdetailsimage/edit', component: EditTourDetailsImage },
     { path: '/admin/tourdetailsimage/delete', component: DeleteTourDetailsImage },
+    { path: '/admin/order', component: OrderAdmin },
+    { path: '/admin/order/delete', component: DeleteOrder },
 ]
 
 export { NormalRoutes, AuthRoutes, AdminRoutes, AdminAuthRoutes };

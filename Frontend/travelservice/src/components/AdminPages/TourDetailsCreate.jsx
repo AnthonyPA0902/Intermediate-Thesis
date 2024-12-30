@@ -152,6 +152,10 @@ const TourDetailsCreate = () => {
                                     <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
                                     Hình Ảnh Tour
                                 </a>
+                                <a className="nav-link" href="/admin/order">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-table"></i></div>
+                                    Đơn Đặt
+                                </a>
                         </div>
                     </div>
                 </nav>

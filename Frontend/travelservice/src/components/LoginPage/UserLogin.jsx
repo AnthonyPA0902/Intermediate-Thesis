@@ -52,9 +52,9 @@ const Login = () => {
                                     <div className="card-body p-md-5 mx-md-4">
                                         <div className="text-center">
                                             <a href="/"><img src="/assets/images/travel-logo.png" style={{ width: '185px' }} alt="logo" /></a>
+                                            <h1 style={{textAlign: 'center'}}>ĐĂNG NHẬP</h1>
                                         </div>
                                         <form onSubmit={handleSubmit}>
-                                            <p>Hãy Đăng Nhập Vào Tài Khoản Của Bạn</p>
                                             <div className="form-outline mb-4">
                                                 <label className="form-label" htmlFor="username">Tài Khoản</label>
                                                 <input type="text" id="username" className="form-control" name="username" value={formData.username} onChange={handleInputChange}/>

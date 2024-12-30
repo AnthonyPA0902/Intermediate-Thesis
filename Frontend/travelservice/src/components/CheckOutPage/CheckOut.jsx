@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 
@@ -92,7 +92,7 @@ const CheckOut = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+        
         try {
             const checkoutData = {
                 NumberOfPeople: numOfPeople,
@@ -100,28 +100,50 @@ const CheckOut = () => {
                 CustomerId: customerId,
                 Total: totalPrice
             };
-            await fetch(`https://localhost:7026/api/checkout/${tourId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(checkoutData)
-            });
-            await Swal.fire({
-                icon: 'success',
-                title: 'Order placed successfully',
-                showConfirmButton: false,
-                timer: 2000 
-            }).then(() => {
-                window.location.href = "/";
-            });
+    
+            if (paymentMethod === "VnPay") {
+                await fetch(`https://localhost:7026/api/checkout/${tourId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(checkoutData)
+                });
+                const response = await fetch(`https://localhost:7026/api/checkout/vnpay`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const returnUrl = await response.text();
+                window.location.href = returnUrl;
+            } else {
+                await fetch(`https://localhost:7026/api/checkout/${tourId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(checkoutData)
+                });
+    
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Order placed successfully',
+                    showConfirmButton: false,
+                    timer: 2000 
+                }).then(() => {
+                    window.location.href = "/";
+                });
+            }
         } catch (error) {
             console.error("Checkout failed:", error);
         }
     };
-
+    
     return (
         <section>
+            <Link to={`/tourdetails?id=${tourId}`}><button style={{marginTop: 40, marginLeft: 100 }} type="button">Quay Lại</button></Link>
+            <h1 style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '2em', marginTop: '50px' }}>THANH TOÁN</h1>
             <div className="checkout">
                 <div className="order-info">
                         <p>Họ tên: {customerName}</p>

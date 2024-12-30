@@ -1,8 +1,7 @@
-﻿using System.Globalization;
-using System.Net.Sockets;
-using System.Net;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
+using System.Net;
+using System.Globalization;
 
 namespace TravelService.Helpers
 {
@@ -92,7 +91,6 @@ namespace TravelService.Helpers
 			return data.ToString();
 		}
 		#endregion
-
 	}
 
 	public class Utils
@@ -114,8 +112,6 @@ namespace TravelService.Helpers
 			return hash.ToString();
 		}
 
-
-		// có chế biến cho .NET Core MVC
 		public static string GetIpAddress(HttpContext context)
 		{
 			var ipAddress = string.Empty;
@@ -125,10 +121,10 @@ namespace TravelService.Helpers
 
 				if (remoteIpAddress != null)
 				{
-					if (remoteIpAddress.AddressFamily == AddressFamily.InterNetworkV6)
+					if (remoteIpAddress.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
 					{
 						remoteIpAddress = Dns.GetHostEntry(remoteIpAddress).AddressList
-							.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork);
+							.FirstOrDefault(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
 					}
 
 					if (remoteIpAddress != null) ipAddress = remoteIpAddress.ToString();

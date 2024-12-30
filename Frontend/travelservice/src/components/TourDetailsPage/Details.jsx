@@ -32,8 +32,10 @@ const Details = () => {
 
     const { tourDetail, tourInfo, images } = tourDetailWithTourInfo;
 
+
     return (
         <section>
+        <Link to={`/vietnamtravel`}><button className="back-btn" style={{marginLeft: 100, marginTop: 40}}>Quay trở lại</button></Link>
         <h1 className="tour-name">{tourInfo.name}</h1>
             <div className="tour-detail-part">
             <div className="tour-details">
